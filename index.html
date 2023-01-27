@@ -9,13 +9,13 @@
 </head>
 <body>
 
+    <div class="wrapper__button">
+
+        <button class="btn">Кликни</button>
+
+    </div>
+
     <div class="wrapper">
-
-        <div class="wrapper__button">
-
-            <button class="btn">Кликни</button>
-
-        </div>
 
         <div class="wrapper__modal modal">
 
@@ -47,7 +47,7 @@
 
                 <div class="inner-wrapp__right">
 
-                    <form class="form" action="">
+                    <form class="form" action="server.php" method="POST" enctype="multipart/form-data">
 
                         <div class="form__item">
 
@@ -59,13 +59,13 @@
                         <div class="form__item">
 
                             <label class="form__label">Введите телефон для подтверждения доступа:</label>
-                            <input class="form__input" type="tel" name="phone" data-tel-input minlength="11" maxlength="18" placeholder="+7 (000) 000-00-00" required>
+                            <input class="form__input" type="tel" name="phone" data-tel-input maxlength="18" placeholder="+7 (000) 000-00-00" required>
 
                         </div>
 
                         <div class="form__button">
 
-                            <button>Скачать файлы <img src="img/arm.png" alt="arm"></button>
+                            <button class="form__btn">Скачать файлы <img src="img/arm.png" alt="arm"></button>
 
                         </div>
 
@@ -79,12 +79,17 @@
 
                 </div>
 
+                <div class="modal__close">
+
+                    <span></span>
+
+                </div>
+
             </div>
 
         </div>
 
     </div>
-    
 
     <script src="js/main.js"></script>
 </body>

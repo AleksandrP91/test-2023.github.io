@@ -29,6 +29,8 @@ ul, ul li { list-style: none; }
     src: url( '../fonts/OpenSans-SemiBold.ttf' ), format( 'truetype' );
 }
 
+
+
 body {
     display: flex;
     align-items: center;
@@ -44,15 +46,71 @@ body {
     background-color: #000;
 }
 
+.wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    display: none;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background-color: rgb(91 90 90 / 50%);
+}
+
+.wrapper.active {
+    display: block;
+}
+
 .wrapper__modal {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    max-width: 950px;
+    width: 100%;
     position: absolute;
     top: 50%;
     left: 50%;
-    margin-right: -50%;
-    transform: translate(-50%, -50%)
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    border-radius: 24px;
+}
+
+.modal__box {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    padding: 50px 50px 70px;
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.modal__close {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+}
+
+.modal__close::after {
+    content: '';
+    position: absolute;
+    top: 2px;
+    right: 13px;
+    width: 3px;
+    height: 26px;
+    background-color: #f00;
+    transform: rotate(45deg);
+}
+
+.modal__close::before {
+    content: '';
+    position: absolute;
+    top: 2px;
+    right: 13px;
+    width: 3px;
+    height: 26px;
+    background-color: #f00;
+    transform: rotate(135deg);
 }
 
 .btn {
@@ -69,16 +127,6 @@ body {
 .btn:hover {
     background-color: rgb(222, 0, 0);
     transition: background-color .3s;
-}
-
-.modal__box {
-    display: flex;
-    position: relative;
-    padding: 50px;
-    min-height: 555px;
-    background-color: #fff;
-    border-radius: 34px;
-    z-index: 1;
 }
 
 .modal__tile {
@@ -150,12 +198,12 @@ body {
     color: #fff;
     background-color: #38d671;
     border-radius: 8px;
-    box-shadow: 0px 8px 0px 0px #36aa60;
+    box-shadow: 0px 6px 0px 0px #36aa60;
     transition: transform 0.15s, box-shadow 0.15s;
 }
 
 .form__button button:hover {
-    box-shadow: 0px 4px 0px 0px #36aa60;
+    box-shadow: 0px 2px 0px 0px #36aa60;
     transition: transform 0.15s, box-shadow 0.15s;
 }
 
@@ -172,10 +220,6 @@ input:focus:-ms-input-placeholder      {opacity: 0; transition: opacity 0.3s eas
 input:invalid:not(:placeholder-shown) {border-color: red;}
 input:valid:not(:placeholder-shown) {border-color: green;}
 
-.form__button button:hover {
-    box-shadow: 0px 8px 0px 0px #36aa60;
-    transition: all .3s;
-}
 
 .form__button button > img {
     padding-left: 40px;
@@ -198,16 +242,20 @@ input:valid:not(:placeholder-shown) {border-color: green;}
     padding-right: 0;
 }
 
-/* .modal__image-file img {
-    display: none;
-} */
-
-
 /* media */
 
 @media (max-width: 981px) {
+    .btn {
+        width: 200px;
+        height: 60px;
+    }
+
     .modal__box {
         padding: 22px 16px;
+    }
+
+    .wrapper__modal {
+        max-width: 550px;
     }
 
     .inner-wrapp__left {

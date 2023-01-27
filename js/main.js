@@ -2,6 +2,8 @@
 
 window.addEventListener('DOMContentLoaded', function() {
 
+    // mask
+
     const phoneInput = function () {
 
 
@@ -84,5 +86,36 @@ window.addEventListener('DOMContentLoaded', function() {
     }
 
     phoneInput();
+
+    // modal
+
+    const btn = document.querySelector('.btn'),
+          modalWrapper = document.querySelector('.wrapper'),
+          modalClose = document.querySelector('.modal__close');
+
+
+    function closeModal() {
+        modalWrapper.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+
+    btn.addEventListener('click', function() {
+        modalWrapper.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    });
+
+    modalClose.addEventListener('click', closeModal);
+
+    modalWrapper.addEventListener('click', function(e) {
+        if (e.target === modalWrapper) {
+            closeModal();
+        }
+    });
+
+    document.addEventListener('keydown', function(e) {
+        if (e.code === 'Escape' && modalWrapper.classList.contains('active')) {
+            closeModal();
+        }
+    });
 
 });
